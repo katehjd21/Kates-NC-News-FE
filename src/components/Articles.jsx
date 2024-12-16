@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getArticles } from "../api";
-import { useState } from "react";
 import ArticlesList from "./Articles.List";
 
 function Articles() {
@@ -14,13 +13,13 @@ function Articles() {
         setArticles(articlesData);
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Error fetching articles:", err);
         setError(true);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [setArticles]);
+  }, []);
 
   return (
     <>
