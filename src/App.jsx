@@ -1,14 +1,17 @@
 import "./App.css";
 import Header from "./components/Header";
-import Articles from "./components/Articles";
 import Nav from "./components/Nav";
+import Articles from "./components/Articles";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header />;
+      <Header />
       <Nav />
-      <Articles />
+      <Routes>
+        <Route path="/" element={<Articles />} />
+      </Routes>
     </>
   );
 }
