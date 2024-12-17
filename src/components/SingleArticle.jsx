@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
 import { useParams } from "react-router-dom";
 import SingleArticleCard from "./SingleArticleCard";
+import ArticleComments from "./ArticleComments";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -29,7 +30,10 @@ function SingleArticle() {
       ) : error ? (
         <p>Oops, something went wrong! Please try again...</p>
       ) : (
-        <SingleArticleCard article={article} />
+        <>
+          <SingleArticleCard article={article} />
+          <ArticleComments />
+        </>
       )}
     </>
   );
