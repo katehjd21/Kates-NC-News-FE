@@ -26,4 +26,15 @@ function getArticleById(article_id) {
     });
 }
 
-export { getArticles, getArticleById };
+function fetchCommentsForArticle(article_id) {
+  return api
+    .get(`/articles/${article_id}/comments`)
+    .then(({ data }) => {
+      return data.comments;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export { getArticles, getArticleById, fetchCommentsForArticle };

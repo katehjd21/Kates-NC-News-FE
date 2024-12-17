@@ -5,19 +5,19 @@ import ArticlesList from "./ArticlesList";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getArticles()
       .then((articlesData) => {
         setArticles(articlesData);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error("Error fetching articles:", err);
         setError(true);
-      })
-      .finally(() => {
         setIsLoading(false);
       });
   }, []);

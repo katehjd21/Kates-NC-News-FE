@@ -97,7 +97,6 @@ p {
 }
 
 #article-author,
-#article-published,
 #article-topic {
   font-size: 0.9rem;
   margin: 4px 0;
@@ -126,4 +125,26 @@ p {
   margin: 12px;
   background-color: #efeff5;
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.comment-list {
+  list-style-type: none;
+  width: 90%;
+}
+
+.comment-list li {
+  background-color: #ffffe6;
+  border: 1px solid gray;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+#comment-author {
+  font-weight: bold;
+}
+
+.date-and-time {
+  font-size: 13px;
+  color: #6a655c;
 }
