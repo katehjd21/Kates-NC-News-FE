@@ -48,6 +48,7 @@ p {
   background-color: midnightblue;
   height: 50px;
   align-items: center;
+  color: white;
 }
 
 .article-card {
@@ -57,7 +58,14 @@ p {
   border: 1px solid #ccc;
   text-align: center;
   border-radius: 8px;
-  color: black;
+}
+
+.article-text {
+  color: midnightblue;
+}
+
+.links-text {
+  color: white;
 }
 
 .article-list {
@@ -80,4 +88,42 @@ p {
 #article-image {
   width: 275px;
   height: 275px;
+}
+
+#article-title {
+  font-size: 2rem;
+  margin: 0 0 8px;
+  color: midnightblue;
+}
+
+#article-author,
+#article-published,
+#article-topic {
+  font-size: 0.9rem;
+  margin: 4px 0;
+  color: midnightblue;
+}
+
+#article-body {
+  font-size: 0.9rem;
+  margin: 4px 0;
+  color: black;
+  padding: 25px 50px;
+}
+
+#article-votes,
+#article-comment-count {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#single-article-card {
+  border: 1px solid midnightblue;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 12px;
+  background-color: #efeff5;
+  transition: transform 0.2s, box-shadow 0.2s;
 }

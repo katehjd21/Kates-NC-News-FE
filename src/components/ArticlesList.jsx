@@ -1,4 +1,5 @@
 import ArticleCard from "./ArticleCard";
+import { Link } from "react-router-dom";
 
 function ArticlesList({ articles, isLoading, error }) {
   return (
@@ -10,7 +11,13 @@ function ArticlesList({ articles, isLoading, error }) {
       ) : (
         <ul className="article-list">
           {articles.map((article) => {
-            return <ArticleCard key={article.article_id} article={article} />;
+            return (
+              <li className="article-card" key={article.article_id}>
+                <Link to={`/articles/${article.article_id}`}>
+                  <ArticleCard article={article} />
+                </Link>
+              </li>
+            );
           })}
         </ul>
       )}
