@@ -148,3 +148,13 @@ p {
   font-size: 13px;
   color: #6a655c;
 }
+
+.vote-btn {
+  margin: 5px !important;
+  width: 150px !important;
+}
+
+#votes {
+  font-weight: bold;
+  font-size: 20px;
+}

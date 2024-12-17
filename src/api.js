@@ -5,36 +5,39 @@ const api = axios.create({
 });
 
 function getArticles() {
-  return api
-    .get("/articles")
-    .then(({ data }) => {
-      return data.articles;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return api.get("/articles").then(({ data }) => {
+    return data.articles;
+  });
 }
 
 function getArticleById(article_id) {
-  return api
-    .get(`/articles/${article_id}`)
-    .then(({ data }) => {
-      return data.article;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return api.get(`/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
 }
 
 function fetchCommentsForArticle(article_id) {
-  return api
-    .get(`/articles/${article_id}/comments`)
-    .then(({ data }) => {
-      return data.comments;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return api.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments;
+  });
 }
 
-export { getArticles, getArticleById, fetchCommentsForArticle };
+function incrementVotesByArticeId(article_id) {
+  return api.patch(`/articles/${article_id}`, { inc_votes: 1 }).then(() => {
+    console.log("Vote incremented successfully!");
+  });
+}
+
+function decrementVotesByArticeId(article_id) {
+  return api.patch(`/articles/${article_id}`, { inc_votes: -1 }).then(() => {
+    console.log("Vote decremented successfully!");
+  });
+}
+
+export {
+  getArticles,
+  getArticleById,
+  fetchCommentsForArticle,
+  incrementVotesByArticeId,
+  decrementVotesByArticeId,
+};
