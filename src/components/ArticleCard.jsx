@@ -1,12 +1,12 @@
 function ArticleCard({ article }) {
   return (
-    <li className="article-card">
-      <h2>{article.title}</h2>
-      <p>By {article.author}</p>
+    <>
+      <h2 className="article-text">{article.title}</h2>
+      <p className="article-text">By {article.author}</p>
       <img src={article.article_img_url} id="article-image" />
-      <p>Votes: {article.votes}</p>
-      <p>Comments: {article.comment_count}</p>
-    </li>
+      <p className="article-text">Votes: {article.votes}</p>
+      <p className="article-text">Comments: {article.comment_count}</p>
+    </>
   );
 }
 
