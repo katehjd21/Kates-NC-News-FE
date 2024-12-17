@@ -1,4 +1,5 @@
 import { manipulateDateAndTime } from "../utils";
+import VotesHandler from "./VotesHandler";
 
 function SingleArticleCard({ article }) {
   return (
@@ -11,7 +12,7 @@ function SingleArticleCard({ article }) {
       <p id="article-topic">Topic: {article.topic}</p>
       <p id="article-body">{article.body}</p>
       <img src={article.article_img_url} id="single-article-img" />
-      <p id="article-votes">Votes: {article.votes}</p>
+      <VotesHandler votes={article.votes} article_id={article.article_id} />
       <p id="article-comment-count">Comment Count: {article.comment_count}</p>
     </div>
   );
