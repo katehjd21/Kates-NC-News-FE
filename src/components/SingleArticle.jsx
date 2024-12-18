@@ -3,6 +3,7 @@ import { getArticleById } from "../api";
 import { useParams } from "react-router-dom";
 import SingleArticleCard from "./SingleArticleCard";
 import ArticleComments from "./ArticleComments";
+import AddComment from "./AddComment";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});

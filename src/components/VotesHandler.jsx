@@ -40,14 +40,14 @@ function VotesHandler({ votes, article_id }) {
       <Button
         variant="contained"
         onClick={handleIncrementClick}
-        className="vote-btn"
+        className="btn"
       >
         Add Vote
       </Button>
       <Button
         variant="contained"
         onClick={handleDecrementClick}
-        className="vote-btn"
+        className="btn"
       >
         Remove Vote
       </Button>
