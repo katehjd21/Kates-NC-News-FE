@@ -33,13 +33,20 @@ function decrementVotesByArticeId(article_id) {
     console.log("Vote decremented successfully!");
   });
 }
-const addCommentByArticleId = (articleId, newComment) => {
+function addCommentByArticleId(articleId, newComment) {
   return api
     .post(`/articles/${articleId}/comments`, newComment)
     .then(({ data }) => {
       return data.comment;
     });
-};
+}
+
+function deleteComment(comment_id) {
+  return api.delete(`/comments/${comment_id}`).then(({ data }) => {
+    console.log("Comment successfully deleted!");
+    return data.comment;
+  });
+}
 
 export {
   getArticles,
@@ -48,4 +55,5 @@ export {
   incrementVotesByArticeId,
   decrementVotesByArticeId,
   addCommentByArticleId,
+  deleteComment,
 };

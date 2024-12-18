@@ -32,8 +32,8 @@ function ArticleComments() {
         <p>Oops, something went wrong! Please try again...</p>
       ) : (
         <>
-          <ArticleCommentsCard comments={comments} />
           <AddComment setComments={setComments} article_id={article_id} />
+          <ArticleCommentsCard comments={comments} setComments={setComments} />
         </>
       )}
     </>
