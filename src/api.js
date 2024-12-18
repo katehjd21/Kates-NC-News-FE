@@ -33,6 +33,13 @@ function decrementVotesByArticeId(article_id) {
     console.log("Vote decremented successfully!");
   });
 }
+const addCommentByArticleId = (articleId, newComment) => {
+  return api
+    .post(`/articles/${articleId}/comments`, newComment)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
 
 export {
   getArticles,
@@ -40,4 +47,5 @@ export {
   fetchCommentsForArticle,
   incrementVotesByArticeId,
   decrementVotesByArticeId,
+  addCommentByArticleId,
 };

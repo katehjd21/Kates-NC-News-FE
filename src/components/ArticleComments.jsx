@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { fetchCommentsForArticle } from "../api";
 import { useEffect, useState } from "react";
 import ArticleCommentsCard from "./ArticleCommentsCard";
+import AddComment from "./AddComment";
 
 function ArticleComments() {
   const [comments, setComments] = useState([]);
@@ -32,6 +33,7 @@ function ArticleComments() {
       ) : (
         <>
           <ArticleCommentsCard comments={comments} />
+          <AddComment setComments={setComments} article_id={article_id} />
         </>
       )}
     </>
