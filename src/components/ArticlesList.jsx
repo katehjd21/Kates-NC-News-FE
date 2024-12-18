@@ -1,13 +1,15 @@
 import ArticleCard from "./ArticleCard";
 import { Link } from "react-router-dom";
 
-function ArticlesList({ articles, isLoading, error }) {
+function ArticlesList({ articles, isLoading, hasError }) {
   return (
-    <div>
+    <section>
       {isLoading ? (
         <p>Articles are loading...</p>
-      ) : error ? (
-        <p>Oops, something went wrong! Please try again...</p>
+      ) : hasError ? (
+        <>
+          <p>{hasError}</p>
+        </>
       ) : (
         <ul className="article-list">
           {articles.map((article) => {
@@ -21,7 +23,7 @@ function ArticlesList({ articles, isLoading, error }) {
           })}
         </ul>
       )}
-    </div>
+    </section>
   );
 }
 

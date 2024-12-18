@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 function AddComment({ setComments, article_id }) {
   const { user } = useContext(UserContext);
   const [submitPending, setSubmitPending] = useState(false);
-  const [error, setError] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [newComment, setNewComment] = useState("");
 
   function handleChange(e) {
@@ -25,17 +25,17 @@ function AddComment({ setComments, article_id }) {
         setComments((currComments) => [newlyAddedComment, ...currComments]);
         setSubmitPending(false);
         setNewComment("");
-        setError(false);
+        setHasError(false);
       })
       .catch(() => {
-        setError(true);
+        setHasError(true);
         setSubmitPending(false);
       });
   }
 
   return (
     <div>
-      {error ? (
+      {hasError ? (
         <p>"Oops, something went wrong! Please try again later..."</p>
       ) : null}
       <form onSubmit={handleSubmit}>

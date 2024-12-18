@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import Articles from "./components/Articles";
+import FetchArticles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import { Routes, Route } from "react-router-dom";
 
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/" element={<Articles />} />
+        <Route path="/" element={<FetchArticles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
     </>

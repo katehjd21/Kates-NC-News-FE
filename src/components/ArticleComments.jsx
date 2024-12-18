@@ -8,7 +8,7 @@ function ArticleComments() {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,7 +19,7 @@ function ArticleComments() {
       })
       .catch((err) => {
         console.log(err);
-        setError(true);
+        setHasError(true);
         setIsLoading(false);
       });
   }, [article_id]);
@@ -28,7 +28,7 @@ function ArticleComments() {
     <>
       {isLoading ? (
         <p>Comments are loading...</p>
-      ) : error ? (
+      ) : hasError ? (
         <p>Oops, something went wrong! Please try again...</p>
       ) : (
         <>
