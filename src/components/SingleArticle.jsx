@@ -8,7 +8,7 @@ import AddComment from "./AddComment";
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function SingleArticle() {
       })
       .catch((err) => {
         console.log(err);
-        setError(true);
+        setHasError(true);
         setIsLoading(false);
       });
   }, [article_id]);
@@ -28,7 +28,7 @@ function SingleArticle() {
     <>
       {isLoading ? (
         <p>Articles are loading...</p>
-      ) : error ? (
+      ) : hasError ? (
         <p>Oops, something went wrong! Please try again...</p>
       ) : (
         <>
