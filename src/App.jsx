@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/" element={<FetchArticles />} />
+        <Route path="/articles" element={<FetchArticles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="*" element={<Error />} />
       </Routes>
