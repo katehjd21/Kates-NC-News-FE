@@ -4,9 +4,9 @@ const api = axios.create({
   baseURL: "https://kates-nc-news.onrender.com/api",
 });
 
-function getArticles(topic) {
+function getArticles(topic, sort_by, order) {
   return api
-    .get(`/articles${topic ? `?topic=${topic}` : ""}`)
+    .get("/articles", { params: { topic, sort_by, order } })
     .then(({ data }) => {
       return data.articles;
     });

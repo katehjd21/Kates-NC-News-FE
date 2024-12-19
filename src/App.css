@@ -204,3 +204,16 @@ p {
   cursor: not-allowed;
   transform: none;
 }
+
+.sort-by-select-box {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.order-btn {
+  height: 35px;
+  padding: 5px;
+  background-color: #dedddc;
+  color: midnightblue;
+  margin: 5px 8px;
+}
