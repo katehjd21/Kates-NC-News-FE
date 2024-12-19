@@ -44,11 +44,11 @@ p {
 
 .nav-bar {
   list-style-type: none;
-  display: flex;
-  justify-content: space-evenly;
+  display: flex !important;
+  justify-content: space-evenly !important;
   background-color: midnightblue;
   height: 50px;
-  align-items: center;
+  align-items: center !important;
   color: white;
 }
 
