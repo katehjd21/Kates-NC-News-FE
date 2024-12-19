@@ -4,20 +4,20 @@ import ArticlesList from "./ArticlesList";
 
 function FetchArticles() {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
   const [hasError, setHasError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading("Articles are loading...");
     getArticles()
       .then((articlesData) => {
         setArticles(articlesData);
-        setIsLoading(false);
+        setIsLoading(null);
       })
       .catch((err) => {
         console.log("Error fetching articles:", err);
-        setHasError("Failed to load articles. Please try again later...");
-        setIsLoading(false);
+        setHasError("Failed to load articles. Please try again later!");
+        setIsLoading(null);
       });
   }, []);
 

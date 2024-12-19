@@ -3,40 +3,41 @@ import { getArticleById } from "../api";
 import { useParams } from "react-router-dom";
 import SingleArticleCard from "./SingleArticleCard";
 import ArticleComments from "./ArticleComments";
-import AddComment from "./AddComment";
+import Error from "./Error";
+import Loading from "./Loading";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
+  const [hasError, setHasError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
+    setIsLoading("Article is loading...");
     getArticleById(article_id)
       .then((article) => {
         setArticle(article);
-        setIsLoading(false);
+        setIsLoading(null);
       })
       .catch((err) => {
-        console.log(err);
-        setHasError(true);
-        setIsLoading(false);
+        setHasError("Failed to load article. Please try again later!");
+        setIsLoading(null);
       });
   }, [article_id]);
 
   return (
-    <>
+    <section id="single-article">
       {isLoading ? (
-        <p>Articles are loading...</p>
+        <Loading message={isLoading} />
       ) : hasError ? (
-        <p>Oops, something went wrong! Please try again...</p>
+        <Error message={hasError} />
       ) : (
         <>
           <SingleArticleCard article={article} />
           <ArticleComments />
         </>
       )}
-    </>
+    </section>
   );
 }
 

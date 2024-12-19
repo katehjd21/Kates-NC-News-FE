@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { incrementVotesByArticeId, decrementVotesByArticeId } from "../api";
 import Button from "@mui/material/Button";
+import Error from "./Error";
 
 function VotesHandler({ votes, article_id }) {
   const [votesAdded, setVotesAdded] = useState(0);
@@ -12,7 +13,7 @@ function VotesHandler({ votes, article_id }) {
       setVotesAdded((currVotesAdded) => {
         return currVotesAdded - 1;
       });
-      setHasError("Your vote was unable to be added. Please try again!");
+      setHasError("Your vote was unable to be added. Please try again later!");
     });
     setVotesAdded((currVotesAdded) => {
       return currVotesAdded + 1;
@@ -25,7 +26,9 @@ function VotesHandler({ votes, article_id }) {
       setVotesAdded((currVotesRemoved) => {
         return currVotesRemoved + 1;
       });
-      setHasError("Your vote was unable to be removed. Please try again!");
+      setHasError(
+        "Your vote was unable to be removed. Please try again later!"
+      );
     });
     setVotesAdded((currVotesRemoved) => {
       return currVotesRemoved - 1;
@@ -35,7 +38,7 @@ function VotesHandler({ votes, article_id }) {
   return (
     <>
       <p id="votes">Votes: {votes + votesAdded}</p>
-      {hasError ? <p>{error}</p> : null}
+      {hasError ? <Error message={hasError} /> : null}
 
       <Button
         variant="contained"

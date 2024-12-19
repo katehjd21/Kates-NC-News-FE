@@ -2,11 +2,12 @@ import { addCommentByArticleId } from "../api";
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import Button from "@mui/material/Button";
+import Error from "./Error";
 
 function AddComment({ setComments, article_id }) {
   const { user } = useContext(UserContext);
   const [submitPending, setSubmitPending] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(null);
   const [newComment, setNewComment] = useState("");
 
   function handleChange(e) {
@@ -28,16 +29,14 @@ function AddComment({ setComments, article_id }) {
         setHasError(false);
       })
       .catch(() => {
-        setHasError(true);
+        setHasError("Unable to post comment. Please try again later!");
         setSubmitPending(false);
       });
   }
 
   return (
     <div>
-      {hasError ? (
-        <p>"Oops, something went wrong! Please try again later..."</p>
-      ) : null}
+      {hasError ? <Error message={hasError} /> : null}
       <form onSubmit={handleSubmit}>
         <input
           id="add-comment-input"
