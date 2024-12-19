@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { deleteComment } from "../api";
 import { UserContext } from "../contexts/UserContext";
+import Error from "./Error";
 
 function DeleteComment({ setComments, comment }) {
   const [isDeleting, setIsDeleting] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(null);
   const { user } = useContext(UserContext);
 
   function handleDelete(comment_id) {
@@ -12,7 +13,7 @@ function DeleteComment({ setComments, comment }) {
       setIsDeleting(true);
       deleteComment(comment_id)
         .then(() => {
-          setHasError(false);
+          setHasError(null);
           setIsDeleting(false);
           setComments((currComments) => {
             return currComments.filter(
@@ -21,7 +22,7 @@ function DeleteComment({ setComments, comment }) {
           });
         })
         .catch((err) => {
-          setHasError(true);
+          setHasError("Unable to delete comment. Please try again later!");
           setIsDeleting(false);
         });
     }
@@ -36,9 +37,7 @@ function DeleteComment({ setComments, comment }) {
   } else {
     return (
       <>
-        {hasError ? (
-          <p>Oops, something went wrong! Please try again...</p>
-        ) : null}
+        {hasError ? <Error message={hasError} /> : null}
         <button type="button" id="delete-btn" onClick={handleClick}>
           {isDeleting ? "Deleting" : "Delete"}
         </button>

@@ -52,6 +52,11 @@ p {
   color: white;
 }
 
+#single-article {
+  max-width: 80%;
+  margin: 50px auto;
+}
+
 .article-card {
   list-style-type: none;
   background-color: #f0f0f0;
@@ -97,23 +102,17 @@ p {
 
 #article-author,
 #article-topic {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin: 4px 0;
   color: midnightblue;
+  font-weight: bold;
 }
 
 #article-body {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 4px 0;
   color: black;
   padding: 25px 50px;
-}
-
-#article-votes,
-#article-comment-count {
-  font-size: 16px;
-  font-weight: bold;
-  color: #007bff;
 }
 
 #single-article-card {
@@ -144,7 +143,7 @@ p {
 }
 
 .date-and-time {
-  font-size: 13px;
+  font-size: 15px;
   color: #6a655c;
 }
 
@@ -153,7 +152,8 @@ p {
   width: 150px !important;
 }
 
-#votes {
+#votes,
+#article-comment-count {
   font-weight: bold;
   font-size: 20px;
 }

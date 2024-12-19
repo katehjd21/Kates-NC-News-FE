@@ -1,14 +1,16 @@
 import ArticleCard from "./ArticleCard";
 import { Link } from "react-router-dom";
+import Error from "./Error";
+import Loading from "./Loading";
 
 function ArticlesList({ articles, isLoading, hasError }) {
   return (
     <section>
       {isLoading ? (
-        <p>Articles are loading...</p>
+        <Loading message={isLoading} />
       ) : hasError ? (
         <>
-          <p>{hasError}</p>
+          <Error message={hasError} />
         </>
       ) : (
         <ul className="article-list">
