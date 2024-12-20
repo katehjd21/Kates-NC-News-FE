@@ -1,4 +1,4 @@
-import { manipulateDateAndTime } from "../utils";
+import { manipulateDateAndTime } from "../utils/utils";
 import VotesHandler from "./VotesHandler";
 
 function SingleArticleCard({ article }) {

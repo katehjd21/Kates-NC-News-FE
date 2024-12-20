@@ -1,4 +1,4 @@
-import { addCommentByArticleId } from "../api";
+import { addCommentByArticleId } from "../utils/api";
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import Button from "@mui/material/Button";
@@ -36,28 +36,26 @@ function AddComment({ setComments, article_id, incrementCommentCount }) {
   }
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       {hasError ? <Error message={hasError} /> : null}
-      <form onSubmit={handleSubmit}>
-        <input
-          id="add-comment-input"
-          name="comment"
-          type="text"
-          placeholder="Please add a new comment"
-          value={newComment}
-          onChange={handleChange}
-          required
-        />
-        <Button
-          variant="contained"
-          className="btn"
-          type="submit"
-          disabled={submitPending}
-        >
-          {submitPending ? "Submitting..." : "Submit"}
-        </Button>
-      </form>
-    </div>
+      <input
+        id="add-comment-input"
+        name="comment"
+        type="text"
+        placeholder="Please add a new comment"
+        value={newComment}
+        onChange={handleChange}
+        required
+      />
+      <Button
+        variant="contained"
+        className="btn"
+        type="submit"
+        disabled={submitPending}
+      >
+        {submitPending ? "Submitting..." : "Submit"}
+      </Button>
+    </form>
   );
 }
 

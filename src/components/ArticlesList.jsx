@@ -5,7 +5,7 @@ import Loading from "./Loading";
 
 function ArticlesList({ articles, isLoading, hasError }) {
   return (
-    <section>
+    <>
       {isLoading ? (
         <Loading message={isLoading} />
       ) : hasError ? (
@@ -25,7 +25,7 @@ function ArticlesList({ articles, isLoading, hasError }) {
           })}
         </ul>
       )}
-    </section>
+    </>
   );
 }
 

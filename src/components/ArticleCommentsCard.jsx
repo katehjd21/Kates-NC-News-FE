@@ -1,4 +1,4 @@
-import { manipulateDateAndTime } from "../utils";
+import { manipulateDateAndTime } from "../utils/utils";
 import DeleteComment from "./DeleteComment";
 
 function ArticleCommentsCard({ comments, setComments, decrementCommentCount }) {

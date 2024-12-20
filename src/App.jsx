@@ -12,9 +12,16 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/articles" element={<FetchArticles />} />
+        <Route path="/" element={<FetchArticles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
-        <Route path="*" element={<Error />} />
+        <Route
+          path="*"
+          element={
+            <Error
+              message={"Oops! We couldn’t find the page you were looking for."}
+            />
+          }
+        />
       </Routes>
     </>
   );

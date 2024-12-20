@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticles } from "../api";
+import { getArticles } from "../utils/api";
 import ArticlesSortBy from "./ArticlesSortBy";
 import ArticlesList from "./ArticlesList";
 import { useSearchParams } from "react-router-dom";
@@ -40,7 +40,7 @@ function FetchArticles() {
   }, [topicQuery, sortByQuery, orderQuery]);
 
   return (
-    <>
+    <section>
       <h2 id="articles-title">
         {topicQuery ? `Articles on ${topicQuery}` : "All Articles"}
       </h2>
@@ -56,7 +56,7 @@ function FetchArticles() {
         isLoading={isLoading}
         hasError={hasError}
       />
-    </>
+    </section>
   );
 }
 
