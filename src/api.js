@@ -24,17 +24,14 @@ function fetchCommentsForArticle(article_id) {
   });
 }
 
-function incrementVotesByArticeId(article_id) {
-  return api.patch(`/articles/${article_id}`, { inc_votes: 1 }).then(() => {
-    console.log("Vote incremented successfully!");
-  });
+function updateVotesByArticleId(article_id, inc_votes) {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then(({ data }) => {
+      return data.article;
+    });
 }
 
-function decrementVotesByArticeId(article_id) {
-  return api.patch(`/articles/${article_id}`, { inc_votes: -1 }).then(() => {
-    console.log("Vote decremented successfully!");
-  });
-}
 function addCommentByArticleId(articleId, newComment) {
   return api
     .post(`/articles/${articleId}/comments`, newComment)
@@ -60,9 +57,8 @@ export {
   getArticles,
   getArticleById,
   fetchCommentsForArticle,
-  incrementVotesByArticeId,
-  decrementVotesByArticeId,
   addCommentByArticleId,
   deleteComment,
   getTopics,
+  updateVotesByArticleId,
 };
