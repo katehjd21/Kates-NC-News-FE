@@ -10,6 +10,7 @@ function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(null);
   const [hasError, setHasError] = useState(null);
+  const [commentCount, setCommentCount] = useState(0);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -18,12 +19,21 @@ function SingleArticle() {
       .then((article) => {
         setArticle(article);
         setIsLoading(null);
+        setCommentCount(article.comment_count);
       })
       .catch((err) => {
         setHasError("Failed to load article. Please try again later!");
         setIsLoading(null);
       });
   }, [article_id]);
+
+  function incrementCommentCount() {
+    setCommentCount((currCount) => currCount + 1);
+  }
+
+  function decrementCommentCount() {
+    setCommentCount((currCount) => currCount - 1);
+  }
 
   return (
     <section id="single-article">
@@ -33,8 +43,13 @@ function SingleArticle() {
         <Error message={hasError} />
       ) : (
         <>
-          <SingleArticleCard article={article} />
-          <ArticleComments />
+          <SingleArticleCard
+            article={{ ...article, comment_count: commentCount }}
+          />
+          <ArticleComments
+            incrementCommentCount={incrementCommentCount}
+            decrementCommentCount={decrementCommentCount}
+          />
         </>
       )}
     </section>

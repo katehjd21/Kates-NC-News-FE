@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 import Button from "@mui/material/Button";
 import Error from "./Error";
 
-function AddComment({ setComments, article_id }) {
+function AddComment({ setComments, article_id, incrementCommentCount }) {
   const { user } = useContext(UserContext);
   const [submitPending, setSubmitPending] = useState(false);
   const [hasError, setHasError] = useState(null);
@@ -27,6 +27,7 @@ function AddComment({ setComments, article_id }) {
         setSubmitPending(false);
         setNewComment("");
         setHasError(false);
+        incrementCommentCount();
       })
       .catch(() => {
         setHasError("Unable to post comment. Please try again later!");
@@ -47,8 +48,13 @@ function AddComment({ setComments, article_id }) {
           onChange={handleChange}
           required
         />
-        <Button variant="contained" className="btn" type="submit">
-          Submit
+        <Button
+          variant="contained"
+          className="btn"
+          type="submit"
+          disabled={submitPending}
+        >
+          {submitPending ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </div>

@@ -6,7 +6,7 @@ import AddComment from "./AddComment";
 import Error from "./Error";
 import Loading from "./Loading";
 
-function ArticleComments() {
+function ArticleComments({ incrementCommentCount, decrementCommentCount }) {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(null);
@@ -33,8 +33,16 @@ function ArticleComments() {
         <Error message={hasError} />
       ) : (
         <>
-          <AddComment setComments={setComments} article_id={article_id} />
-          <ArticleCommentsCard comments={comments} setComments={setComments} />
+          <AddComment
+            setComments={setComments}
+            article_id={article_id}
+            incrementCommentCount={incrementCommentCount}
+          />
+          <ArticleCommentsCard
+            comments={comments}
+            setComments={setComments}
+            decrementCommentCount={decrementCommentCount}
+          />
         </>
       )}
     </>

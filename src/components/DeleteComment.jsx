@@ -3,7 +3,7 @@ import { deleteComment } from "../api";
 import { UserContext } from "../contexts/UserContext";
 import Error from "./Error";
 
-function DeleteComment({ setComments, comment }) {
+function DeleteComment({ setComments, comment, decrementCommentCount }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [hasError, setHasError] = useState(null);
   const { user } = useContext(UserContext);
@@ -15,6 +15,7 @@ function DeleteComment({ setComments, comment }) {
         .then(() => {
           setHasError(null);
           setIsDeleting(false);
+          decrementCommentCount();
           setComments((currComments) => {
             return currComments.filter(
               (comment) => comment.comment_id !== comment_id
@@ -38,8 +39,13 @@ function DeleteComment({ setComments, comment }) {
     return (
       <>
         {hasError ? <Error message={hasError} /> : null}
-        <button type="button" id="delete-btn" onClick={handleClick}>
-          {isDeleting ? "Deleting" : "Delete"}
+        <button
+          type="button"
+          id="delete-btn"
+          onClick={handleClick}
+          disabled={isDeleting}
+        >
+          {isDeleting ? "Deleting..." : "Delete"}
         </button>
       </>
     );
