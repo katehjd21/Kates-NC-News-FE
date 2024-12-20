@@ -1,7 +1,7 @@
 import { manipulateDateAndTime } from "../utils";
 import DeleteComment from "./DeleteComment";
 
-function ArticleCommentsCard({ comments, setComments }) {
+function ArticleCommentsCard({ comments, setComments, decrementCommentCount }) {
   return (
     <>
       <ul className="comment-list">
@@ -13,7 +13,11 @@ function ArticleCommentsCard({ comments, setComments }) {
                 {manipulateDateAndTime(comment.created_at)}
               </p>
               <p>{comment.body}</p>
-              <DeleteComment setComments={setComments} comment={comment} />
+              <DeleteComment
+                setComments={setComments}
+                comment={comment}
+                decrementCommentCount={decrementCommentCount}
+              />
             </li>
           );
         })}
