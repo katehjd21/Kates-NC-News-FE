@@ -1,38 +1,40 @@
 import { useState } from "react";
-import { incrementVotesByArticeId, decrementVotesByArticeId } from "../api";
-import Button from "@mui/material/Button";
+import { updateVotesByArticleId } from "../api";
 import Error from "./Error";
+import { Button } from "@mui/material";
 
 function VotesHandler({ votes, article_id }) {
-  const [votesAdded, setVotesAdded] = useState(0);
+  const [votesAdded, setVotesAdded] = useState(false);
   const [hasError, setHasError] = useState(null);
+  const [isToggled, setIsToggled] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
 
-  function handleIncrementClick() {
+  function handleToggleClick() {
     setHasError(null);
-    incrementVotesByArticeId(article_id).catch(() => {
-      setVotesAdded((currVotesAdded) => {
-        return currVotesAdded - 1;
-      });
-      setHasError("Your vote was unable to be added. Please try again later!");
-    });
+    setIsLoading("Updating...");
+
+    const inc_votes = isToggled ? -1 : 1;
+
     setVotesAdded((currVotesAdded) => {
-      return currVotesAdded + 1;
+      return currVotesAdded + inc_votes;
     });
-  }
 
-  function handleDecrementClick() {
-    setHasError(null);
-    decrementVotesByArticeId(article_id).catch(() => {
-      setVotesAdded((currVotesRemoved) => {
-        return currVotesRemoved + 1;
+    updateVotesByArticleId(article_id, inc_votes)
+      .then(() => {
+        setIsLoading(null);
+        setIsToggled(!isToggled);
+      })
+      .catch(() => {
+        setIsLoading(null);
+        setVotesAdded((currVotesAdded) => {
+          return currVotesAdded - inc_votes;
+        });
+        setHasError(
+          `Your vote was unable to be ${
+            inc_votes > 0 ? "added" : "removed"
+          }. Please try again later!`
+        );
       });
-      setHasError(
-        "Your vote was unable to be removed. Please try again later!"
-      );
-    });
-    setVotesAdded((currVotesRemoved) => {
-      return currVotesRemoved - 1;
-    });
   }
 
   return (
@@ -42,17 +44,10 @@ function VotesHandler({ votes, article_id }) {
 
       <Button
         variant="contained"
-        onClick={handleIncrementClick}
-        className="btn"
+        onClick={handleToggleClick}
+        className="toggle-button"
       >
-        Add Vote
-      </Button>
-      <Button
-        variant="contained"
-        onClick={handleDecrementClick}
-        className="btn"
-      >
-        Remove Vote
+        {isLoading ? "Updating..." : isToggled ? "Unvote" : "Vote"}
       </Button>
     </>
   );
