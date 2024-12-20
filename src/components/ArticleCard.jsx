@@ -1,4 +1,4 @@
-import { manipulateDateAndTime } from "../utils";
+import { manipulateDateAndTime } from "../utils/utils";
 
 function ArticleCard({ article }) {
   return (

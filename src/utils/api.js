@@ -42,7 +42,6 @@ function addCommentByArticleId(articleId, newComment) {
 
 function deleteComment(comment_id) {
   return api.delete(`/comments/${comment_id}`).then(({ data }) => {
-    console.log("Comment successfully deleted!");
     return data.comment;
   });
 }

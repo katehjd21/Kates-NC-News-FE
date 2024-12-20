@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { fetchCommentsForArticle } from "../api";
+import { fetchCommentsForArticle } from "../utils/api";
 import { useEffect, useState } from "react";
 import ArticleCommentsCard from "./ArticleCommentsCard";
 import AddComment from "./AddComment";
@@ -26,7 +26,7 @@ function ArticleComments({ incrementCommentCount, decrementCommentCount }) {
   }, [article_id]);
 
   return (
-    <>
+    <section>
       {isLoading ? (
         <Loading message={isLoading} />
       ) : hasError ? (
@@ -45,7 +45,7 @@ function ArticleComments({ incrementCommentCount, decrementCommentCount }) {
           />
         </>
       )}
-    </>
+    </section>
   );
 }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getTopics } from "../api";
-import { useSearchParams } from "react-router-dom";
+import { getTopics } from "../utils/api";
+import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import Error from "./Error";
 
@@ -9,7 +9,6 @@ function TopicsDropdown() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [hasError, setHasError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   function fetchTopics() {
     setIsLoading("Topics are loading...");
@@ -18,7 +17,7 @@ function TopicsDropdown() {
         setTopics(topicsData);
         setIsLoading(null);
       })
-      .catch((err) => {
+      .catch(() => {
         setHasError("Topics unavailable");
         setIsLoading(null);
       });
@@ -28,19 +27,15 @@ function TopicsDropdown() {
     fetchTopics();
   }, []);
 
-  const handleTopicClick = (slug) => {
-    setSearchParams({ topic: slug });
-    setDropdownVisible(false);
-  };
-
   return (
     <div className="topics-dropdown">
-      <button
-        className="dropdown-btn"
+      <Link
+        to={"/"}
+        className="dropdown-btn, links-text"
         onClick={() => setDropdownVisible(!dropdownVisible)}
       >
         Topics
-      </button>
+      </Link>
       {dropdownVisible && (
         <div className="dropdown-content">
           {isLoading ? (
@@ -52,13 +47,14 @@ function TopicsDropdown() {
             </div>
           ) : (
             topics.map((topic) => (
-              <button
+              <Link
                 key={topic.slug}
                 className="dropdown-item"
-                onClick={() => handleTopicClick(topic.slug)}
+                to={`/?topic=${topic.slug}`} // Navigate to the filtered articles
+                onClick={() => setDropdownVisible(false)} // Optional: Close dropdown on click
               >
                 {topic.slug}
-              </button>
+              </Link>
             ))
           )}
         </div>

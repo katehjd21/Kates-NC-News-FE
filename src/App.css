@@ -42,16 +42,6 @@ p {
   color: midnightblue;
 }
 
-.nav-bar {
-  list-style-type: none;
-  display: flex !important;
-  justify-content: space-evenly !important;
-  background-color: midnightblue;
-  height: 50px;
-  align-items: center !important;
-  color: white;
-}
-
 #single-article {
   max-width: 80%;
   margin: 50px auto;
@@ -90,8 +80,8 @@ p {
   }
 }
 #article-image {
-  width: 275px;
-  height: 275px;
+  max-width: 275px;
+  max-height: 275px;
 }
 
 #article-title {
@@ -123,6 +113,11 @@ p {
   margin: 12px;
   background-color: #efeff5;
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#single-article-img {
+  max-width: 500px;
+  max-height: 500px;
 }
 
 .comment-list {
@@ -163,6 +158,7 @@ p {
   padding: 10px;
   margin: 10px 0;
   border: 2px solid #ccc;
+  background-color: white;
   border-radius: 5px;
   font-size: 16px;
   font-family: Arial, sans-serif;
@@ -216,4 +212,71 @@ p {
   background-color: #dedddc;
   color: midnightblue;
   margin: 5px 8px;
+}
+
+.nav-bar {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: midnightblue;
+  height: 50px;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.topics-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 15px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.links-text:hover {
+  color: lightgray;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 150px;
+  padding: 0;
+  margin: 0;
+}
+
+.topics-dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.dropdown-content .dropdown-item {
+  padding: 10px 15px;
+  text-align: left;
+  text-decoration: none;
+  color: midnightblue;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content .dropdown-item:hover {
+  background-color: midnightblue;
+  color: white;
 }

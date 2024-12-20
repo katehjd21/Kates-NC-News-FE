@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { deleteComment } from "../api";
+import { deleteComment } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import Error from "./Error";
 
