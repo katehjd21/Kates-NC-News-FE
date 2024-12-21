@@ -4,11 +4,11 @@ const api = axios.create({
   baseURL: "https://kates-nc-news.onrender.com/api",
 });
 
-function getArticles(topic, sort_by, order, p, limit) {
+function getArticles(topic, sort_by, order, page, limit) {
   return api
-    .get("/articles", { params: { topic, sort_by, order, p, limit } })
+    .get("/articles", { params: { topic, sort_by, order, p: page, limit } })
     .then(({ data }) => {
-      return data.articles;
+      return data;
     });
 }
 
@@ -51,6 +51,14 @@ function getTopics() {
     return data.topics;
   });
 }
+
+// function getArticlesPagination(page, limit) {
+//   return api
+//     .get("/articles", { params: { p: page, limit } })
+//     .then(({ data }) => {
+//       return data;
+//     });
+// }
 
 export {
   getArticles,

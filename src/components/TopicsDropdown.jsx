@@ -50,8 +50,8 @@ function TopicsDropdown() {
               <Link
                 key={topic.slug}
                 className="dropdown-item"
-                to={`/?topic=${topic.slug}`} // Navigate to the filtered articles
-                onClick={() => setDropdownVisible(false)} // Optional: Close dropdown on click
+                to={`/?topic=${topic.slug}`} //
+                onClick={() => setDropdownVisible(false)} //
               >
                 {topic.slug}
               </Link>

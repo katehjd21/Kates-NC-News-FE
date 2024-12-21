@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Error from "./Error";
 import Loading from "./Loading";
 
-function ArticlesList({ articles, isLoading, hasError }) {
+function ArticlesList({ articlesList, isLoading, hasError }) {
   return (
     <>
       {isLoading ? (
@@ -14,7 +14,7 @@ function ArticlesList({ articles, isLoading, hasError }) {
         </>
       ) : (
         <ul className="article-list">
-          {articles.map((article) => {
+          {articlesList.map((article) => {
             return (
               <li className="article-card" key={article.article_id}>
                 <Link to={`/articles/${article.article_id}`}>
