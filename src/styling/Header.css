@@ -1,0 +1,28 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.news-header {
+  background: linear-gradient(to right, purple, midnightblue);
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.news-header {
+  padding: 5px 15px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.2;
+}
+
+.header-text {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #343a40;
+}

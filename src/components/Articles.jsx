@@ -5,6 +5,7 @@ import ArticlesOrder from "./ArticlesOrder";
 import ArticlesList from "./ArticlesList";
 import { useSearchParams } from "react-router-dom";
 import Pagination from "./Pagination";
+import "../styling/Articles.css";
 
 function FetchArticles() {
   const [articlesList, setArticlesList] = useState([]);

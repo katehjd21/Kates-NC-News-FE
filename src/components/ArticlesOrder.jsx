@@ -1,12 +1,22 @@
+import { Button } from "@mui/material";
+
 function ArticlesOrder({ setSortOrder }) {
   return (
     <>
-      <button className="order-btn" onClick={() => setSortOrder("asc")}>
+      <Button
+        className="order-btn"
+        variant="contained"
+        onClick={() => setSortOrder("asc")}
+      >
         Ascending
-      </button>
-      <button className="order-btn" onClick={() => setSortOrder("desc")}>
+      </Button>
+      <Button
+        className="order-btn"
+        variant="contained"
+        onClick={() => setSortOrder("desc")}
+      >
         Descending
-      </button>
+      </Button>
     </>
   );
 }
