@@ -1,0 +1,41 @@
+#article-title {
+  font-size: 2rem;
+  margin: 0 0 8px;
+  color: midnightblue;
+}
+
+#article-author,
+#article-topic {
+  font-size: 1.2rem;
+  margin: 4px 0;
+  color: midnightblue;
+  font-weight: bold;
+}
+
+#article-body {
+  font-size: 1rem;
+  margin: 4px 0;
+  color: black;
+  padding: 25px 50px;
+}
+
+#single-article-card {
+  border: 1px solid midnightblue;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 12px;
+  background-color: #efeff5;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#single-article-img {
+  max-width: 500px;
+  max-height: 500px;
+}
+
+#votes,
+#article-comment-count {
+  font-weight: bold;
+  font-size: 20px;
+}

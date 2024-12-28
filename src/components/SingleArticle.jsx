@@ -5,6 +5,7 @@ import SingleArticleCard from "./SingleArticleCard";
 import ArticleComments from "./ArticleComments";
 import Error from "./Error";
 import Loading from "./Loading";
+import "../styling/SingleArticle.css";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});

@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styling/App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import FetchArticles from "./components/Articles";

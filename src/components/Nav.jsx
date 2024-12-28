@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TopicsDropdown from "./TopicsDropdown";
+import "../styling/Nav.css";
 
 function Nav() {
   return (

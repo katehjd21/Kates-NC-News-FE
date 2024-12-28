@@ -34,7 +34,7 @@ function TopicsDropdown() {
         className="dropdown-btn, links-text"
         onClick={() => setDropdownVisible(!dropdownVisible)}
       >
-        Topics
+        Topics <span id="dropdown-arrow">&#9662;</span>
       </Link>
       {dropdownVisible && (
         <div className="dropdown-content">
